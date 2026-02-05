@@ -118,6 +118,8 @@ class AudioSyncTextView @JvmOverloads constructor(
     init {
         // 启用垂直滚动条
         isVerticalScrollBarEnabled = true
+        // 设置滚动条样式，显示在内容上方，不占用 Padding
+        scrollBarStyle = View.SCROLLBARS_INSIDE_OVERLAY
     }
 
     /**
@@ -199,6 +201,8 @@ class AudioSyncTextView @JvmOverloads constructor(
             post {
                 requestLayout()
                 invalidate()
+                // 唤醒滚动条，使其在数据加载后显示
+                awakenScrollBars()
             }
         }
     }
